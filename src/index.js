@@ -83,11 +83,11 @@ addTaskButton.addEventListener('click', function () {
         const taskPriority = document.getElementById('new-priority');       
         const taskProject = document.getElementById('new-project');
 
-        if (taskTitle.value === '' ) {
-            alert('Please enter Title');
+        if (taskTitle.checkValidity() === false ) {
+            taskTitle.reportValidity();
         }
-        else if (taskDueDate.value === '') {
-            alert('Please enter Due Date');
+        else if (taskDueDate.checkValidity() === false) {
+            taskDueDate.reportValidity();
         }
         else {
             allTasks.push(newTaskInfo(taskTitle.value, taskDetails.value, taskDueDate.value, taskPriority.value, taskProject.value));

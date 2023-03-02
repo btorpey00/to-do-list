@@ -136,6 +136,7 @@ select,
 button,
 textarea {
     background: var(--input-bg);
+    resize: none;
 }
 
 .task-list-item {
@@ -167,4 +168,8 @@ textarea {
 
 .high {
     border-left: 5px solid red;
+}
+
+input:invalid {
+    border: 1px solid red;
 }

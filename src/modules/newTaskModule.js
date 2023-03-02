@@ -7,6 +7,7 @@ export default function renderTaskModule() {
     const newTitleInput = document.createElement('input');
     newTitleInput.setAttribute('type', 'text');
     newTitleInput.id = 'new-title';
+    newTitleInput.required = true;
     const newTitleLabel = document.createElement('label');
     newTitleLabel.setAttribute('for', 'new-title');
     newTitleLabel.innerText = 'Task';
@@ -24,6 +25,7 @@ export default function renderTaskModule() {
 
     const newDueDateInput = document.createElement('input');
     newDueDateInput.setAttribute('type', 'date');
+    newDueDateInput.required = true;
     newDueDateInput.id = 'new-due-date';
     const newDueDateLabel = document.createElement('label');
     newDueDateLabel.setAttribute('for', 'new-due-date');
