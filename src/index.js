@@ -5,8 +5,11 @@ import renderTaskModule from './modules/newTaskModule.js';
 import newTaskInfo from './modules/newTaskInfo.js';
 import renderTasks from './modules/renderTasks.js';
 
-const allTasks = [];
+const allTasks = JSON.parse(localStorage.getItem("allTasks") || '[]');
+
 const allProjects = [];
+
+
 
 const header = document.createElement('h1');
 header.className = 'main-header';
@@ -62,25 +65,16 @@ const taskListContainer = document.createElement('div');
 taskListContainer.className = 'task-list-container';
 mainContainer.appendChild(taskListContainer);
 
-
-
-// const testDiv = document.createElement('div');
-// const testIcon = document.createElement('i');
-// testIcon.classList = 'fa-solid fa-check';
-// testDiv.appendChild(testIcon);
-
-// document.body.appendChild(testDiv);
-// testDiv.addEventListener('click', function () {
-//     console.log('hello');
-//     renderTasks(allTasks)});
-
-
-
 const taskModule = document.createElement('div');
+taskModule.className = 'task-module';
 document.body.appendChild(taskModule);
 
+taskListContainer.appendChild(renderTasks(allTasks));
+
 addTaskButton.addEventListener('click', function () {
+    taskModule.style.display = 'flex';
     taskModule.appendChild(renderTaskModule());
+    
     const newTaskAccept = document.getElementById('new-task-accept');
     newTaskAccept.addEventListener('click', function(){
         const taskTitle = document.getElementById('new-title');
@@ -91,6 +85,14 @@ addTaskButton.addEventListener('click', function () {
         taskListContainer.innerText = '';
         taskListContainer.appendChild(renderTasks(allTasks));
         taskModule.textContent = '';
+        taskModule.style.display = 'none';
+        localStorage.setItem("allTasks", JSON.stringify(allTasks));
+    });
+
+    const newTaskCancel = document.getElementById('new-task-cancel');
+    newTaskCancel.addEventListener('click', function() {
+        taskModule.textContent = '';
+        taskModule.style.display = 'none';
     });
 });
 

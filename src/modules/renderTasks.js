@@ -1,10 +1,14 @@
+import { format } from "date-fns";
+
 const taskListContainer = document.createElement('ul');
+taskListContainer.className = 'task-list-container'
 
 export default function renderTasks(taskArray) {
-    
+
     taskListContainer.innerText = '';
     
-        for (let i = 0; i < taskArray.length; i++) {
+    for (let i = 0; i < taskArray.length; i++) {
+
         let currentTask = document.createElement('li');
         currentTask.className = 'task-list-item';
         taskListContainer.appendChild(currentTask);
@@ -17,7 +21,7 @@ export default function renderTasks(taskArray) {
         markComplete.addEventListener ('change', function () {
             currentTask.classList.toggle('completed-task');
             taskArray[i].isComplete = !taskArray[i].isComplete;
-            console.log(taskArray[i].isComplete);
+            localStorage.setItem("allTasks", JSON.stringify(taskArray));
         });
         if (taskArray[i].isComplete === true) {
             currentTask.classList.toggle('completed-task');
@@ -33,7 +37,7 @@ export default function renderTasks(taskArray) {
         // currentTask.appendChild(currentDetails);
 
         const currentDueDate = document.createElement('div');
-        currentDueDate.innerText = taskArray[i].dueDate;
+        currentDueDate.innerText = format(taskArray[i].dueDate, 'MM/dd/yyy');
         currentTask.appendChild(currentDueDate);
 
         const currentPriority = document.createElement('div');
@@ -45,7 +49,7 @@ export default function renderTasks(taskArray) {
         editTask.setAttribute('title', 'Edit');
         currentTask.appendChild(editTask);
         editTask.addEventListener('click', function() {
-            console.log('edit ' + taskArray[i].title);
+            // console.log('edit ' + taskArray[i].title);
         });
 
         const deleteTask = document.createElement('div');
@@ -55,16 +59,10 @@ export default function renderTasks(taskArray) {
         currentTask.appendChild(deleteTask);
         deleteTask.addEventListener('click', function() {
             taskArray.splice(i, 1);
-            // deleteTask.closest('li').remove();
-            console.table(taskArray);
-            // taskListContainer.parentElement.textContent = '';
             renderTasks(taskArray);
+            localStorage.setItem("allTasks", JSON.stringify(taskArray));
         });
-
-        // const currentProject = document.createElement('div');
-        // currentProject.innerText = taskArray[i].project;
-        // currentTask.appendChild(currentProject);
-    }
+    };
 
     return taskListContainer;
 

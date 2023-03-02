@@ -1,7 +1,7 @@
 export default function renderTaskModule() {
     let testTask;
     const newTaskModule = document.createElement('div');
-    newTaskModule.className = 'new-test-module';
+    newTaskModule.className = 'new-task-module';
     // mainContainer.appendChild(newTaskModule);
 
     const newTitleInput = document.createElement('input');
@@ -13,8 +13,8 @@ export default function renderTaskModule() {
     newTaskModule.appendChild(newTitleLabel);
     newTaskModule.appendChild(newTitleInput);
 
-    const newDetailsInput = document.createElement('input');
-    newDetailsInput.setAttribute('type', 'textarea');
+    const newDetailsInput = document.createElement('textarea');
+    newDetailsInput.setAttribute('rows', '5');
     newDetailsInput.id = 'new-details';
     const newDetailsLabel = document.createElement('label');
     newDetailsLabel.setAttribute('for', 'new-details');
@@ -60,45 +60,18 @@ export default function renderTaskModule() {
     newTaskModule.appendChild(newProjectLabel);
     newTaskModule.appendChild(newProjectInput);
 
+    const newTaskCancel = document.createElement('button');
+    newTaskCancel.id = ('new-task-cancel');
+    newTaskCancel.innerText = 'Cancel';
+    newTaskModule.appendChild(newTaskCancel);
+
     const newTaskAccept = document.createElement('button');
     newTaskAccept.id = ('new-task-accept');
-    newTaskAccept.innerText = 'OK';
-    newTaskModule.appendChild(newTaskAccept)
-//     newTaskAccept.addEventListener('click', function(){
-//         testTask = NewTask(newPriorityInput.value, newDetailsInput.value, newDueDateInput.value, newPriorityInput.value, newProjectInput.value, false);
-//         console.log(testTask);
-//         return testTask;
-// });
+    newTaskAccept.innerText = 'Add Task';
+    newTaskModule.appendChild(newTaskAccept);
+
 document.body.appendChild(newTaskModule);
 
 return newTaskModule;
 
-    
 }
-
-// const NewTask = (title, details, dueDate, priority, project, isComplete) => {
-
-//     return {
-//         title,
-//         details,
-//         dueDate,
-//         priority,
-//         project
-//     };
-// }
-
-// function createNewTask() {
-//     renderTaskModule();
-//     console.log(testTask);
-//     return testTask;
-    // let testTask = NewTask(newPriorityInput.value, newDetailsInput.value, newDueDateInput.value, newPriorityInput.value, newProjectInput.value, false);
-    // console.log(testTask);
-    // return testTask;
-
-
-// return testTask;
-
-// }
-// let testTask = NewTask('test', 'testing', 'someday', 'high', 'none', false);
-
-// export default testTask;
