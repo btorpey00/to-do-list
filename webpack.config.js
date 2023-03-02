@@ -4,7 +4,8 @@ module.exports = {
     mode: 'development',
   entry: {
     index: './src/index.js',
-    newTask: './src/modules/newTask.js',
+    newTaskModule: './src/modules/newTaskModule.js',
+    newTaskInfo: './src/modules/newTaskInfo.js',
     renderTask: './src/modules/renderTasks.js',
   },
   devtool: 'inline-source-map',
@@ -17,6 +18,10 @@ module.exports = {
       {
         test: /\.css$/i,
         use: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        type: 'asset/resource',
       },
     ],
   },

@@ -1,0 +1,5 @@
+export defualt function renderProjects(projectArray) {
+    const projectContainer = document.createElement('ul');
+
+    
+}

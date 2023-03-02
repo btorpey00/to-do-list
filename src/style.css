@@ -1,0 +1,102 @@
+@font-face {
+    font-family: 'Tilt Neon', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    src: url('./TiltNeon.ttf') format('ttf');
+    font-weight: 400;
+    font-style: normal;
+}
+
+:root {
+    --header-bg: rgb(118, 171, 209);
+    --header-text: rgb(60, 60, 60);
+    --nav-hover: rgb(25, 25, 25);
+    --main-bg: rgb(173, 176, 179);
+    --completed-task: lightgray;
+
+}
+
+body {
+    font-family: 'Tilt Neon';
+    padding: 0;
+    margin: 0;
+}
+
+.main-header {
+    text-align: center;
+    background: var(--header-bg);
+    color: var(--header-text);
+    font-size: 3rem;
+    font-weight: bold;
+    padding: .5rem;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.main-container {
+    margin-top: 0;
+    padding: 0;
+    display: flex;
+    align-items: stretch;
+}
+
+.side-bar {
+    background: var(--header-bg);
+    color: var(--header-text);
+    margin-top: 0;
+    /* height: calc(100vh - 4rem); */
+    height: 50vh;
+    width: 250px;
+    padding-left: 2rem;
+    padding-top: 2rem;
+    font-size: 1.25rem;
+}
+
+.nav-links {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 0;
+}
+
+.nav-links li {
+    display: flex;
+    align-items: center;
+    /* font-size: 1.25rem; */
+    cursor: pointer;
+    margin-bottom: 1.5rem;
+    transition: .25s;
+}
+
+.nav-links li:hover {
+    position: relative;
+    scale: 1.1;
+    transform: translateX(.25rem);
+    color: var(--nav-hover);
+}
+
+.nav-links li p {
+    margin: 0;
+}
+
+.nav-links svg {
+    width: 3rem;
+}
+
+.add-task-button {
+    font-size: 1.25rem;
+    font-family: 'Tilt Neon';
+    align-self: center;
+}
+
+.task-list-container {
+    background: var(--main-bg);
+    flex-grow: 1;
+}
+
+.task-list-item {
+    list-style: none;
+    display: flex;
+}
+
+.completed-task {
+    text-decoration: line-through;
+    color: var(--completed-task);
+}
