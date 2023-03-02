@@ -134,18 +134,37 @@ body {
 .new-task-module input,
 select,
 button,
-textarea
- {
+textarea {
     background: var(--input-bg);
 }
 
 .task-list-item {
-    display: flex;
+    display: grid;
+    grid-template-columns: 2rem 2rem 1fr 4rem 2rem 1rem;
     width: 75%;
-
     gap: 1rem;
+    margin-bottom: .5rem;
+    border: 1px solid slategray;
 }
+
+.task-list-item :nth-child(4),
+:nth-child(5) {
+    justify-self: flex-end;
+}
+
 
 .task-list-item :nth-child(3){
     margin-left: auto;
+}
+
+.low {
+    border-left: 5px solid green;
+}
+
+.medium {
+    border-left: 5px solid yellow;
+}
+
+.high {
+    border-left: 5px solid red;
 }

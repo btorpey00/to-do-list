@@ -1,4 +1,4 @@
-import { format } from "date-fns";
+import { compareAsc, format } from "date-fns";
 
 const taskListContainer = document.createElement('ul');
 taskListContainer.className = 'task-list-container'
@@ -6,11 +6,13 @@ taskListContainer.className = 'task-list-container'
 export default function renderTasks(taskArray) {
 
     taskListContainer.innerText = '';
+    taskArray.sort((a,b) => compareAsc(a.dueDate, b.dueDate));
     
     for (let i = 0; i < taskArray.length; i++) {
 
         let currentTask = document.createElement('li');
         currentTask.className = 'task-list-item';
+        currentTask.classList.add(taskArray[i].priority);
         taskListContainer.appendChild(currentTask);
 
         const markComplete = document.createElement('input');

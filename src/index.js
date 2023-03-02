@@ -80,13 +80,23 @@ addTaskButton.addEventListener('click', function () {
         const taskTitle = document.getElementById('new-title');
         const taskDetails = document.getElementById('new-details');
         const taskDueDate = document.getElementById('new-due-date');
-        const taskPriority = document.getElementById('new-priority');       const taskProject = document.getElementById('new-project');
-        allTasks.push(newTaskInfo(taskTitle.value, taskDetails.value, taskDueDate.value, taskPriority.value, taskProject.value));
-        taskListContainer.innerText = '';
-        taskListContainer.appendChild(renderTasks(allTasks));
-        taskModule.textContent = '';
-        taskModule.style.display = 'none';
-        localStorage.setItem("allTasks", JSON.stringify(allTasks));
+        const taskPriority = document.getElementById('new-priority');       
+        const taskProject = document.getElementById('new-project');
+
+        if (taskTitle.value === '' ) {
+            alert('Please enter Title');
+        }
+        else if (taskDueDate.value === '') {
+            alert('Please enter Due Date');
+        }
+        else {
+            allTasks.push(newTaskInfo(taskTitle.value, taskDetails.value, taskDueDate.value, taskPriority.value, taskProject.value));
+            taskListContainer.innerText = '';
+            taskListContainer.appendChild(renderTasks(allTasks));
+            taskModule.textContent = '';
+            taskModule.style.display = 'none';
+            localStorage.setItem("allTasks", JSON.stringify(allTasks));
+        };
     });
 
     const newTaskCancel = document.getElementById('new-task-cancel');
